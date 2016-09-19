@@ -10,14 +10,20 @@ Rover is a simple application inspired from the [traditional  Mars Rover challen
 4. Colliding with an obstacle will remove the rover from the game.
 
 ## Usage
-ttt
+
+To play Rover download all of the files and save them to a directory. Open Terminal and enter the following command:
+
+`$ ruby app.rb`
+
+Below is some sample out from the game:
+
+
 
 ## Dependancies
 
-
 Terminal-table is used to generate the ASCII table within the console.
 
-`gem "terminal-table"`
+`$ gem "terminal-table"`
 
 ### Personal
 
