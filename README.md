@@ -11,13 +11,11 @@ Rover is a simple application inspired from the [traditional  Mars Rover challen
 
 ## Usage
 
-To play Rover download all of the files and save them to a directory. Open Terminal and enter the following command:
+To play Rover download all of the files and save them to a directory.
+
+Open Terminal and enter the following command:
 
 `$ ruby app.rb`
-
-Below is some sample out from the game:
-
-
 
 ## Dependancies
 
@@ -27,4 +25,4 @@ Terminal-table is used to generate the ASCII table within the console.
 
 ### Personal
 
-In my pursuit to learn Ruby I took this project on to practice my skills. Please feel free to critique my code and offer support.
+I took this project on for fun and to help practice my Ruby skills. Please feel free to critique my code and offer support. Shout out to Fabio Gelsomini for giving me the inspiration for this project. 
