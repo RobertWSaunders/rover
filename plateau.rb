@@ -4,30 +4,40 @@ require 'terminal-table'
 class Plateau
 
   class << self
-  # Prints the grid to the screen given the rovers and obstacle objects
-  def print_grid(rover)
-    rover_row = Array.new
-    normal_row = Array.new
-      App::GRID_SIZE.times do |row_num|
-        if row_num+1 == rover.location[:x]
-          rover_row.push("#{rover.name} (#{rover.direction})")
-          normal_row.push(" ")
-        else
-          rover_row.push(" ")
-          normal_row.push(" ")
-        end
+    # Prints the grid to the screen given the rovers and obstacle objects
+    def print_grid(grid_items)
+
+    plateau = Terminal::Table.new do |t|
+          App::GRID_SIZE.times do |y_value|
+            t.add_row(get_row_for_y(grid_items,y_value))
+            t.add_separator if y_value < App::GRID_SIZE-1
+          end
       end
-      table = Terminal::Table.new do |t|
-      App::GRID_SIZE.times do |col_num|
-        if col_num+1 == (rover.location[:y])
-          t.add_row(rover_row)
-        else
-          t.add_row(normal_row)
-        end
-        t.add_separator if col_num < App::GRID_SIZE-1
-      end
+      #Put the plateau out to the screen
+      puts plateau
     end
-    puts table
-  end
+
+
+    def get_row_for_y(grid_items, y_value)
+      all_grid_items = grid_items[:rovers]
+      #all_grid_items.push(grid_items[:obstacles])
+      grid_item_row = Array.new
+      App::GRID_SIZE.times do |x_value|
+          all_grid_items.each do |grid_item|
+            if (grid_item.location[:x] == x_value) && (grid_item.location[:y] == y_value)
+              if grid_item.class == Rover
+                grid_item_row.push("#{grid_item.name} (#{grid_item.direction})")
+              elsif grid_item.class == Obstacle
+                grid_item_row.push("X")
+              end
+            elsif (grid_item.location[:y] == y_value)
+                grid_item_row.push(" ")
+            end
+          end
+      end
+      return grid_item_row
+    end
+
+
   end
 end

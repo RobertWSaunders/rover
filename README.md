@@ -5,9 +5,10 @@
 Rover is a simple application inspired from the [traditional  Mars Rover challenge](https://code.google.com/archive/p/marsrovertechchallenge/). In this version the user can enter names of rovers and choose one to drive around a grid, also known as the plateau, filled with obstacles. The user inputs driving commands for the rover they are driving, the other rovers drive themselves randomly. Colliding with obstacles will result in a rover being damaged beyond repair, and is thus removed from the game, the rover who lasts the longest wins. There are a few rules:
 
 1. Rovers cannot be on the same square.
-2. Rovers must stay within the grid.
-3. Rovers display their name and direction on the grid.
-4. Colliding with an obstacle will remove the rover from the game.
+2. Rovers and obstacles are placed randomly on the grid at the beginning.
+3. Rovers must stay within the grid.
+4. Rovers display their name and direction on the grid.
+5. Colliding with an obstacle will remove the rover from the game.
 
 ## Usage
 
@@ -25,4 +26,4 @@ Terminal-table is used to generate the ASCII table within the console.
 
 ### Personal
 
-I took this project on for fun and to help practice my Ruby skills. Please feel free to critique my code and offer support. Shout out to Fabio Gelsomini for giving me the inspiration for this project. 
+I took this project on for fun and to help practice my Ruby skills. Please feel free to critique my code and offer support. Shout out to Fabio Gelsomini for giving me the inspiration for this project.

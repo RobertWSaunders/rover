@@ -4,7 +4,7 @@ require "./plateau"
 # Why do files just know where constants are?
 class App
 
-  GRID_SIZE = 10
+  GRID_SIZE = 5
 
   class << self
 
@@ -59,8 +59,8 @@ class App
         elsif command == "switch"
           break
         else
-          rover.drive(command)
-          Plateau.print_grid(rover)
+          rover.drive(command,rover)
+          Plateau.print_grid({ rovers: Rover.instances, obstacles: Obstacle.instances })
         end
       end
     end
