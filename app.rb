@@ -59,9 +59,14 @@ class App
         elsif command == "switch"
           break
         else
-          rover.drive(command,rover)
           Plateau.print_grid({ rovers: Rover.instances, obstacles: Obstacle.instances })
         end
+      end
+    end
+
+    def drive_other_rovers_randomly(selected_rover)
+      Rover.instances.each do |rover|
+        rover.drive(["u","d","l","r"].sample,rover) if !(rover.name == selected_rover.name)
       end
     end
 

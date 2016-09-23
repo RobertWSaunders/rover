@@ -6,7 +6,7 @@ class Rover
   attr_accessor :name, :location, :direction, :lives
 
   #Initialization
-  def initialize(name="Mars Robert", location={x: rand(0..App::GRID_SIZE), y: rand(0..App::GRID_SIZE)}, direction="s", lives=2)
+  def initialize(name="Mars Robert", location={x: rand(0..App::GRID_SIZE-1), y: rand(0..App::GRID_SIZE-1)}, direction="s", lives=2)
     @name = name
     @location = location
     @direction = direction
@@ -16,14 +16,14 @@ class Rover
   #Instance Methods
   def drive(type,rover)
     case type
-    when "left","l"
-      perform_maneuver(:x,"-","w",rover)
-    when "right","r"
-      perform_maneuver(:x,"+","e",rover)
-    when "up","u"
-      perform_maneuver(:y,"-","n",rover)
-    when "down","d"
-      perform_maneuver(:y,"+","s",rover)
+      when "left","l"
+        perform_maneuver(:x,"-","w",rover)
+      when "right","r"
+        perform_maneuver(:x,"+","e",rover)
+      when "up","u"
+        perform_maneuver(:y,"-","n",rover)
+      when "down","d"
+        perform_maneuver(:y,"+","s",rover)
     else
       puts "This drive command is not supported."
     end
@@ -43,8 +43,7 @@ class Rover
         projected = @location[:x] + 1
       end
     end
-    # have to check if there exists another rover at the same location
-    if (projected <= App::GRID_SIZE) && (projected >= 1) || !(is_another_rover_at_location?(rover))
+    if ((projected < App::GRID_SIZE) && (projected >= 0))
       if movement == "+"
         @location[key] += 1
       else
@@ -52,13 +51,13 @@ class Rover
       end
       @direction = direction
     else
-      puts "Grid restriction, cannot move here."
+      puts "Grid restriction, cannot move here. (#{rover.name}) "
     end
   end
 
   def is_another_rover_at_location?(rover)
     Rover.instances.each do |rover_checking|
-      if rover_checking.location == rover
+      if rover_checking == rover
         return true
       end
     end
