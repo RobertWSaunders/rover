@@ -1,7 +1,7 @@
 require "./rover"
 require "./obstacle"
 require "./plateau"
-# Why do files just know where constants are?
+
 class App
 
   GRID_SIZE = 5
